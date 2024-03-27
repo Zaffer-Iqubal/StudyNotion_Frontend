@@ -27,10 +27,48 @@ import EditCourse from "./components/core/Dashboard/EditCourse/EditCourse";
 import ViewCourse from "./pages/ViewCourses";
 import VideoDetails from './components/core/ViewCourse/VideoDetails';
 import InstructorDashboard from "./components/core/Dashboard/InstructorDashBoard/InstructorDashboard";
+import toast from "react-hot-toast";
+import { useState } from "react";
+import picture from './assets/Logo/Logo-Small-Dark.png';
 
 function App() {
   
   const {user} = useSelector((state) => state.profile);
+  const [toastStatus, settoastStatus] = useState(true);
+
+  if (toastStatus) {
+    toast.custom((t) => (
+    <div
+      className={`${
+        t.visible ? 'animate-enter' : 'animate-leave'
+      } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+    >
+      <div className="flex-1 w-0 p-4">
+        <div className="flex items-start">
+          <div className="flex-shrink-0 pt-0.5">
+            <img
+              className="h-10 w-10 rounded-full"
+              src={picture}
+              alt=""
+            />
+          </div>
+          <div className="ml-3 flex-1">
+            <p className="text-sm font-medium text-gray-900">
+              Zaffer Iqubal
+            </p>
+            <p className="mt-1 text-sm text-gray-500">
+              Backend server is using free hoisting service which may require 8-10 sec to warm-up initially,
+              sorry for the inconvenience.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    ), {
+      duration: 4000,
+    })
+    settoastStatus(false)
+  }
   
   return (
     <main className="w-screen min-h-screen bg-richblack-900 flex flex-col font-inter">
