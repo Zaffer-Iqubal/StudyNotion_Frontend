@@ -21,8 +21,6 @@ export default function Catalog() {
         
         const category_id = response?.data?.data.filter((category) => category.name.split(" ").join("-").toLowerCase() === catalogName)[0]._id;
 
-        console.log(category_id);
-
         setCategoryId(category_id);
     }
 

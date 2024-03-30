@@ -79,8 +79,6 @@ const Navbar = () => {
     fetchSublinks();
   }, []);
 
-  console.log('SubLinks', subLinks);
-
   const location = useLocation();
   const matchRoute = (route) => {
     return matchPath({ path: route }, location.pathname);

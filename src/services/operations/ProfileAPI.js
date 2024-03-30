@@ -23,7 +23,7 @@ export async function getEnrolledCourses(token) {
 } 
 
 export async function getInstructorData(token) {
-    const toastId = toast.loading("Loading...");
+  const toastId = toast.loading("Loading...");
   let result = [];
   try {
     const response = await apiConnector("GET", profileEndpoints.GET_INSTRUCTOR_DATA_API, null, {

@@ -40,7 +40,6 @@ const InstructorCourses = ({ courses, setCourses }) => {
     setLoading(false);
   };
 
-  console.log("Getting courses for total time:", courses);
 
   return (
     <>

@@ -19,7 +19,7 @@ import { ACCOUNT_TYPE } from "../utils/Constants";
 import toast from "react-hot-toast";
 import { addTocart } from "../services/operations/cartAPI";
 import { setTotalItems } from "../slices/cartSlices";
-// import ReviewSlider from "../common/ReviewSlideer";
+import ReviewSlider from "../components/common/ReviewSlider";
 
 const CourseDetails = () => {
   const { token } = useSelector((state) => state.auth);
@@ -31,24 +31,10 @@ const CourseDetails = () => {
   const { courseId } = useParams();
 
   const [courseData, setCourseData] = useState(null);
-  const [avgReviewCount, setAvgReviewCount] = useState(0);
+  
   const [confirmationModal, setConfirmationModal] = useState(null);
   let [totalNumberOfLectures, setTotalNumberOfLectures] = useState(0);
   const [isActive, setIsActive] = useState(Array(0));
-
-  // Something extra start
-  // Get cartItems
-  // const [cartItem, setCartItem] = useState(null);
-  // useEffect(() => {
-  //   const fetchCartItems = async () => {
-  //     const cartDetails = await getEntireCart(token);
-  //     setCartItem(cartDetails);
-  //     console.log("cartDetails", cartDetails);
-  //   };
-  //   fetchCartItems();
-  //   // eslint-disable-next-line
-  // }, [courseId]);
-  // Something extra end
 
   const handleActive = (id) => {
     setIsActive(
@@ -87,6 +73,8 @@ const CourseDetails = () => {
     // Call the function to get data
     getCourseDetails();
   }, [courseId]);
+  
+  const [avgReviewCount, setAvgReviewCount] = useState(null);
 
   // Avg review
   useEffect(() => {
@@ -95,6 +83,7 @@ const CourseDetails = () => {
     );
     setAvgReviewCount(count);
   }, [courseData]);
+
 
   // Total number of lectures
   useEffect(() => {
@@ -190,7 +179,7 @@ const CourseDetails = () => {
               {/* Ratings section */}
               <div className="flex text-md flex-wrap items-center gap-2">
                 {/* Avg Review */}
-                <span className="text-yellow-25">{avgReviewCount}</span>
+                <span className="text-yellow-25">{avgReviewCount.isNaN ? 0 : avgReviewCount}</span>
                 {/* Stars */}
                 <RatingStars Review_Count={avgReviewCount} Star_Size={24} />
                 {/* Total reviews */}
@@ -334,7 +323,7 @@ const CourseDetails = () => {
         <div className="text-center text-4xl font-semibold mt-10">
           Reviews from other learners
         </div>
-        {/* <ReviewSlider /> */}
+        <ReviewSlider />
       </section>
 
       <Footer />

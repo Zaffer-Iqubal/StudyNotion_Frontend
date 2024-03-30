@@ -54,7 +54,7 @@ function App() {
           </div>
           <div className="ml-3 flex-1">
             <p className="text-sm font-medium text-gray-900">
-              Zaffer Iqubal
+              StudyNotion
             </p>
             <p className="mt-1 text-sm text-gray-500">
               Backend server is using free hoisting service which may require 8-10 sec to warm-up initially,

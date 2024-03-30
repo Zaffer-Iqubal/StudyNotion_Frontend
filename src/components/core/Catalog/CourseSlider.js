@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/free-mode";
 
-import { Pagination, FreeMode, Autoplay } from "swiper/modules";
+import { Pagination, FreeMode, Autoplay } from "swiper";
 import CourseCard from './CourseCard';
 
 export default function CourseSlider({courses}) {

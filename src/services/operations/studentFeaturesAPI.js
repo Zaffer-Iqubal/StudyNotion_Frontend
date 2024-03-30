@@ -51,7 +51,6 @@ export async function buyCourse(
       { courses },
       { Authorization: `Bearer ${token}` }
     );
-    console.log("order response", orderResponse);
 
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
@@ -82,8 +81,6 @@ export async function buyCourse(
       },
     };
 
-    console.log("options", options);
-
     // Initialize razorpay with options
     const razorpay = new window.Razorpay(options);
 
@@ -91,10 +88,8 @@ export async function buyCourse(
     razorpay.open();
     razorpay.on("payment failed", function (response) {
       toast.error("OOPS, payment failed");
-      console.log(response.error);
     });
   } catch (error) {
-    console.log("COURSE_PAYMENT_API ERROR...", error);
     toast.error("Could not make payment");
   }
   toast.dismiss(toastId);
